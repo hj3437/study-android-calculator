@@ -13,8 +13,11 @@ class CalculatorDecimalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalculatorDecimalBinding
 
     private var isFirstInput = true
+    private var lastOperator = "+"
+
     private var resultNumber: Long = 0L
     private var inputNumber: Long = 0L
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +40,55 @@ class CalculatorDecimalActivity : AppCompatActivity() {
     // 숫자 입력후 + 버튼을 누른다음 숫자 입력후 = 버튼으 누르면 계산이 되는 방법이 있습니다.
     // 숫자 입력후 + 버튼을 숫자 입력후 + 버튼을 누르는 방법이 있습니다.
     fun operateEvent(view: View) {
-        Log.d(TAG, "operateEvent: ${view.tag}, resultNumber: ${resultNumber}")
+        Log.d(TAG, "operateEvent: ${view.tag}, before resultNumber: ${resultNumber}")
+
+        if (!isFirstInput) {
+            if (resultNumber == 0L) {
+                resultNumber = binding.calculatorInputTextView.text.toString().toLong()
+            } else {
+                inputNumber = binding.calculatorInputTextView.text.toString().toLong()
+
+                when (view.tag.toString()) {
+                    getString(R.string.btn_plus) -> {
+                        resultNumber += inputNumber
+                    }
+
+                    getString(R.string.btn_minus) -> {
+                        resultNumber -= inputNumber
+                    }
+
+                    getString(R.string.btn_multiply) -> {
+                        resultNumber *= inputNumber
+                    }
+
+                    getString(R.string.btn_divide) -> {
+                        resultNumber /= inputNumber
+                    }
+                }
+            }
+
+            binding.calculatorRecordTextView.text = "$resultNumber ${view.tag}"
+
+            if (resultNumber != binding.calculatorInputTextView.text.toString().toLong()) {
+                binding.calculatorInputTextView.text = resultNumber.toString()
+            }
+
+            lastOperator = view.tag.toString()
+            isFirstInput = true
+        } else {
+            Log.d(TAG, "operateEvent: isFirstInput: $isFirstInput")
+        }
+
+        Log.d(TAG, "operateEvent: ${view.tag}, after resultNumber: ${resultNumber}")
+    }
+
+    fun resultEvent(view: View) {
+        Log.d(TAG, "resultEvent: ${view.tag}")
 
         if (!isFirstInput) {
             inputNumber = binding.calculatorInputTextView.text.toString().toLong()
 
-            when (view.tag.toString()) {
+            when (lastOperator) {
                 getString(R.string.btn_plus) -> {
                     resultNumber += inputNumber
                 }
@@ -60,13 +106,13 @@ class CalculatorDecimalActivity : AppCompatActivity() {
                 }
             }
 
-            binding.calculatorRecordTextView.text = "$resultNumber ${view.tag}"
+            binding.calculatorInputTextView.text = resultNumber.toString()
+            binding.calculatorRecordTextView.text = "$resultNumber $lastOperator"
+
             isFirstInput = true
         }
-    }
 
-    fun resultEvent(view: View) {
-        Log.d(TAG, "resultEvent: ${view.tag}")
+        Log.d(TAG, "resultEvent: ${view.tag}, after resultNumber: ${resultNumber}")
     }
 
     fun clearEvent(view: View) {
@@ -76,5 +122,6 @@ class CalculatorDecimalActivity : AppCompatActivity() {
         binding.calculatorRecordTextView.text = null
         isFirstInput = true
         resultNumber = 0L
+        inputNumber = 0L
     }
 }
