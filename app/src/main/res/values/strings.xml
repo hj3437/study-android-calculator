@@ -22,4 +22,5 @@
     <string name="btn_eight">8</string>
     <string name="btn_nine">9</string>
     <string name="btn_zero">0</string>
+    <string name="btn_backspace"><![CDATA[<<<]]></string>
 </resources>
