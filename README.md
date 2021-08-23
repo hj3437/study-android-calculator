@@ -23,7 +23,7 @@ TextView 입력 한줄 표시, 최대길이 제한
 2021-08-21 ~ 2021-08-23 학습  
 2021-08-23 ~ 정수형 계산기 진행중  
 
-##참고영상  
+## 참고영상  
 https://www.youtube.com/playlist?list=PLMocbRXgGcjblqWSMjUfu9mL6GQ-X6a0S  
 
 ## 이미지  
