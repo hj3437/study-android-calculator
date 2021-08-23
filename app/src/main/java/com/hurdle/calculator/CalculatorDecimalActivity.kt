@@ -14,6 +14,7 @@ class CalculatorDecimalActivity : AppCompatActivity() {
 
     private var isFirstInput = true
     private var resultNumber: Long = 0L
+    private var inputNumber: Long = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +34,34 @@ class CalculatorDecimalActivity : AppCompatActivity() {
         }
     }
 
-    //
+    // 숫자 입력후 + 버튼을 누른다음 숫자 입력후 = 버튼으 누르면 계산이 되는 방법이 있습니다.
+    // 숫자 입력후 + 버튼을 숫자 입력후 + 버튼을 누르는 방법이 있습니다.
     fun operateEvent(view: View) {
-        resultNumber = binding.calculatorInputTextView.text.toString().toLong()
-
         Log.d(TAG, "operateEvent: ${view.tag}, resultNumber: ${resultNumber}")
 
+        if (!isFirstInput) {
+            inputNumber = binding.calculatorInputTextView.text.toString().toLong()
 
-        when (view.tag.toString()) {
+            when (view.tag.toString()) {
+                getString(R.string.btn_plus) -> {
+                    resultNumber += inputNumber
+                }
 
+                getString(R.string.btn_minus) -> {
+                    resultNumber -= inputNumber
+                }
+
+                getString(R.string.btn_multiply) -> {
+                    resultNumber *= inputNumber
+                }
+
+                getString(R.string.btn_divide) -> {
+                    resultNumber /= inputNumber
+                }
+            }
+
+            binding.calculatorRecordTextView.text = "$resultNumber ${view.tag}"
+            isFirstInput = true
         }
     }
 
