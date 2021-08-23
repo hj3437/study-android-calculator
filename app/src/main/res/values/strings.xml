@@ -4,10 +4,11 @@
     <string name="btn_close_parentheses">)</string>
     <string name="btn_percent">%</string>
     <string name="btn_ac">AC</string>
-    <string name="btn_plus">+</string>
-    <string name="btn_minus">-</string>
-    <string name="btn_multiply">X</string>
-    <string name="btn_divide">/</string>
+    <!-- ㄷ 에 한자 키로 변경  -->
+    <string name="btn_plus">＋</string>
+    <string name="btn_minus">－</string>
+    <string name="btn_multiply">×</string>
+    <string name="btn_divide">÷</string>
     <string name="btn_dot">.</string>
     <string name="btn_result">=</string>
 
