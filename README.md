@@ -21,5 +21,5 @@ TextView 입력 한줄 표시, 최대길이 제한
 
 
 ## 이미지
-![](https://github.com/hj3437/study-android-calculator/blob/master/captures/main.png?raw=true)
+![](https://github.com/hj3437/study-android-calculator/blob/master/captures/main2.png?raw=true)
   
