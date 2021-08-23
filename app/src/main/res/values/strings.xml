@@ -6,7 +6,7 @@
     <string name="btn_ac">AC</string>
     <string name="btn_plus">+</string>
     <string name="btn_minus">-</string>
-    <string name="btn_mutiply">X</string>
+    <string name="btn_multiply">X</string>
     <string name="btn_divide">/</string>
     <string name="btn_dot">.</string>
     <string name="btn_result">=</string>
